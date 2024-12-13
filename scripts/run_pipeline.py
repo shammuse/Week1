@@ -6,8 +6,8 @@ from src.sentiment_analysis import perform_sentiment_analysis
 from src.correlation_analysis import correlate_sentiment_with_stock
 from src.visualization import plot_sentiment_distribution, plot_correlation_heatmap
 
-news_filepath = 'data/financial_news.csv'
-stock_filepath = 'data/stock_prices.csv'
+news_filepath = '../data/financial_news.csv'
+stock_filepath = '../data/stock_prices.csv'
 
 news_data = load_news_data(news_filepath)
 stock_data = load_stock_data(stock_filepath)

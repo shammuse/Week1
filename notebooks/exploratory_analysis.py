@@ -5,9 +5,15 @@ from nltk.sentiment import SentimentIntensityAnalyzer
 
 # Load data
 news_data = pd.read_csv('../data/financial_news.csv')
-news_data['date'] = pd.to_datetime(news_data['date'])
 
-# Descriptive statistics
+# Try to parse the 'date' column with error handling
+news_data['date'] = pd.to_datetime(news_data['date'], errors='coerce')
+
+# Check for any invalid date conversions
+if news_data['date'].isnull().sum() > 0:
+    print(f"Warning: {news_data['date'].isnull().sum()} dates were not parsed correctly.")
+
+# Descriptive statistics on headline length
 news_data['headline_length'] = news_data['headline'].apply(len)
 print(news_data['headline_length'].describe())
 
@@ -29,3 +35,4 @@ plt.title('Sentiment Score Distribution')
 plt.xlabel('Sentiment Score')
 plt.ylabel('Frequency')
 plt.show()
+

@@ -1,0 +1,8 @@
+numpy
+pandas
+matplotlib
+TA-Lib
+pynance
+yfinance
+plotly
+
